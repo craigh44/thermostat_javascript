@@ -13,10 +13,6 @@ describe ('Thermostat', function (){
 			expect(thermostat.temperature).toEqual(20);
 		});
 
-		it("power saving mode should be on", function(){
-			expect(thermostat.isPowerSaverOn).toEqual(true);
-		});
-
 		it("it should be able to increase temperature by 1", function(){
 			thermostat.increaseTemperature();
 			expect(thermostat.temperature).toEqual(21);
@@ -27,11 +23,25 @@ describe ('Thermostat', function (){
 			expect(thermostat.temperature).toEqual(19);
 		});
 
-		it("it should have a minimum temperature of 10 degrees", function(){
+		it("it shouldn't be able to go below the minimum temp", function(){
 			thermostat.decreaseTemperatureBy(10);
 			thermostat.decreaseTemperature();
 			expect(thermostat.temperature).toEqual(10);
 		});
+
+		it("it shouldn't be able to go over the maximum temperature", function(){
+			thermostat.powerSaverOff();
+			thermostat.increaseTemperatureBy(12);
+			thermostat.increaseTemperature();
+			expect(thermostat.temperature).toEqual(32);
+		});
+
+		it("it should be able to reset back to 20", function(){
+			thermostat.increaseTemperatureBy(2);
+			thermostat.resetTemperature();
+			expect(thermostat.temperature).toEqual(20);
+		});
+
 	});
 
 	describe('Custom options', function(){
@@ -46,10 +56,28 @@ describe ('Thermostat', function (){
 			expect(thermostat.temperature).toEqual(13)
 		});
 
-		// it("it should have a minimum temperature of 10 degrees", function(){
-		// 	thermostat.decreaseTemperatureBy(12);
-		// 	expect(thermostat.temperature).toEqual(10);
-		// });
+	});
+
+	describe('power saver', function(){
+
+		it("power saving mode should be on", function(){
+			expect(thermostat.isPowerSaverOn).toEqual(true);
+		});
+
+		it("power saving mode should be able to be turned off", function(){
+			thermostat.powerSaverOff();
+			expect(thermostat.isPowerSaverOn).toEqual(false);
+		});
+
+		it("if on the max temperature is 25 degrees", function(){
+			expect(thermostat.maximumTemp).toEqual(25);
+		});
+
+		it('should be able to turn the power saver back on', function(){
+			thermostat.powerSaverOff();
+			thermostat.powerSaverOn();
+			expect(thermostat.isPowerSaverOn).toEqual(true);
+		});
 
 	});
 

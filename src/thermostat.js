@@ -2,10 +2,14 @@ function Thermostat () {
 	this.temperature = 20;
 	this.isPowerSaverOn = true;
 	this.minimumTemp = 10;
+	this.maximumTemp = 25;
 }
 
 Thermostat.prototype.increaseTemperature = function(first_argument) {
-	this.increaseTemperatureBy(1)
+	if(this.temperature === this.maximumTemp)
+		this.increaseTemperatureBy(0);
+	else
+		this.increaseTemperatureBy(1)
 };
 
 Thermostat.prototype.increaseTemperatureBy = function(degrees) {
@@ -20,7 +24,20 @@ else
 };
 
 Thermostat.prototype.decreaseTemperatureBy = function(degrees){
-	
-
 	this.temperature -= degrees;
 };
+
+Thermostat.prototype.resetTemperature = function() {
+	this.temperature = 20;
+};
+
+Thermostat.prototype.powerSaverOff = function() {
+	this.maximumTemp = 32;
+	this.isPowerSaverOn = false;
+};
+
+Thermostat.prototype.powerSaverOn = function() {
+	this.maximumTemp = 25;
+	this.isPowerSaverOn = true;
+};
+
