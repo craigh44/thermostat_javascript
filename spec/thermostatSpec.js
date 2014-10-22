@@ -9,11 +9,11 @@ describe ('Thermostat', function (){
 
 	describe ('By Default', function() {
 
-		it('Should start at 20 degrees', function(){
+		it('it should start at 20 degrees', function(){
 			expect(thermostat.temperature).toEqual(20);
 		});
 
-		it("Power saving mode should be on", function(){
+		it("power saving mode should be on", function(){
 			expect(thermostat.isPowerSaverOn).toEqual(true);
 		});
 
@@ -27,19 +27,29 @@ describe ('Thermostat', function (){
 			expect(thermostat.temperature).toEqual(19);
 		});
 
+		it("it should have a minimum temperature of 10 degrees", function(){
+			thermostat.decreaseTemperatureBy(10);
+			thermostat.decreaseTemperature();
+			expect(thermostat.temperature).toEqual(10);
+		});
 	});
 
 	describe('Custom options', function(){
 
-		it("Should be able to increase by 12", function(){
+		it("it should be able to increase by 12", function(){
 			thermostat.increaseTemperatureBy(12)
 			expect(thermostat.temperature).toEqual(32)
 		});
 
-		it("Should be able to decrease by 7", function(){
+		it("it should be able to decrease by 7", function(){
 			thermostat.decreaseTemperatureBy(7)
 			expect(thermostat.temperature).toEqual(13)
 		});
+
+		// it("it should have a minimum temperature of 10 degrees", function(){
+		// 	thermostat.decreaseTemperatureBy(12);
+		// 	expect(thermostat.temperature).toEqual(10);
+		// });
 
 	});
 
