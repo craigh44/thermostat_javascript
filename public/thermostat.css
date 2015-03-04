@@ -1,0 +1,72 @@
+body {
+	background-color: red;
+	height: 100vh;
+}
+
+.outside_temp h1  {
+	color: black;
+	text-align: center;
+	font-size: 50px
+}
+
+.outside_temp h2  {
+	color: black;
+	text-align: center;
+	font-size: 50px
+}
+
+
+h2 {
+	color: white;
+	font-size: 75px;
+}
+
+
+.thermostat  {
+	text-align: center;
+}
+
+.thermostat h1  {
+	color: white;
+	font-size: 150px;
+}
+
+.power_saver_off {
+	color: white;
+	font-size: 2em;
+	text-decoration: none;
+}
+
+.power_saver_off:hover {
+	color: black;
+}
+
+.power_saver_on {
+	color: white;
+	font-size: 2em;
+	text-decoration: none;
+}
+
+.power_saver_on:hover {
+	color: black;
+}
+
+#temp_buttons a {
+	color: white;
+	font-size: 2em;
+	text-decoration: none;
+}
+
+#temp_buttons a:hover {
+	color: black;
+}
+
+.reset_temp {
+	color: white;
+	font-size: 2em;
+	text-decoration: none;
+}
+
+.reset_temp:hover {
+	color: black;
+}
