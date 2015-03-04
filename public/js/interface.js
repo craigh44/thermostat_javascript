@@ -2,10 +2,20 @@
 $(document).ready(function(){
 	var thermostat = new Thermostat;
 
-	$.get('http://www.myweather2.com/developer/forecast.ashx?uac=UuJ5tIZAKz&output=json&query=SW1', function(data) {
-		$('.outside_temp h2').text(data['weather']['curren_weather'][0]['temp'])
-			console.log(data);
-	});
+
+var apiSetter = function () {
+$.ajax({
+    url: 'http://api.openweathermap.org/data/2.5/find?q=London&units=metric',
+    type: 'GET',
+    dataType: 'jsonp',
+    success: function(data) { 
+    	console.log(data),
+      $('.outside_temp h2').text(data.list[1].weather[0].description);
+    }
+  });
+}
+  apiSetter()
+
 
 	$('.increase_temp').on('click', function(){
 		$('.thermostat h1').text(thermostat.increaseTemperature());
@@ -29,3 +39,4 @@ $(document).ready(function(){
 	});
 
 });
+
